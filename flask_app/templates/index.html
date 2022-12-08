@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+    <title>Registro_login</title>
+</head>
+
+<body>
+    <div class="d-flex flex-wrap justify-content-around">
+        <form action="/registro/usuario" method="post" class="col-5 mx-auto border p-5 my-5 text-light bg-dark">
+            <h2 class="text-info">Registro</h2>
+            {% with messages = get_flashed_messages(category_filter=['registro'] ) %}
+                {% if messages %}
+                    <div class="text-center text-danger">
+                        <h1>Alerta!!!</h1>
+                    </div>
+                {% for message in messages %}
+                    <div class="alert alert-danger" role="alert">
+                        <p>{{message}}</p>
+                    </div>
+                {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" name="nombre" class="form-control" id="nombre" required placeholder="Ejemplo: Luke">
+            </div>
+            <div class="mb-3">
+                <label for="apellido" class="form-label">Apellido</label>
+                <input type="text" name="apellido" class="form-control" id="apellido" required placeholder="Ejemplo: Skywalker">
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" name="email" class="form-control" id="email" required placeholder="Ejemplo: skywalker@mail.com">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="password" required placeholder="**************">
+            </div>
+            <div class="mb-3">
+                <label for="confirm_password" class="form-label">Confirmar Password</label>
+                <input type="password" name="confirm_password" class="form-control" id="confirm_password" required placeholder="***********">
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-info btn-outline-primary">Enviar</button>
+            </div>
+        </form>
+
+
+        <!-- formulario login -->
+        <form action="/login" method="post" class="col-5 mx-auto border p-5 my-5 text-light bg-dark">
+            <h2 class="text-info">Login</h2>
+            {% with messages = get_flashed_messages(category_filter=['login'] ) %}
+                {% if messages %}
+                    <div class="text-center text-danger">
+                        <h1>Alerta!!!</h1>
+                    </div>
+                    {% for message in messages %}
+                        <div class="alert alert-danger" role="alert">
+                            <p>{{message}}</p>
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="text" name="email" class="form-control" id="email" required placeholder="Ejemplo: skywalker@mail.com">
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" name="password" class="form-control" id="password" required placeholder="***********">
+            </div>
+            <div class="mb-3">
+                <button type="submit" class="btn btn-info btn-outline-primary">Enviar</button>
+            </div>
+            {% with messages = get_flashed_messages(category_filter=['login']) %}
+                {% if messages %}
+                    {% for message in messages %}
+                        <p>{{message}}</p>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+        </form>
+    </div>
+</body>
+
+</html>
